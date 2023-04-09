@@ -1,0 +1,14 @@
+.intro {
+  background-image: linear-gradient(to right, #3e63e7, #576CBC);
+  width: 50%;
+  height: auto;
+  border-radius: 5px;
+
+  .paragraph {
+    padding: 25px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+  }
+}
