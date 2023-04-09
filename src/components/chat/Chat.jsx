@@ -11,7 +11,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 export default function Chat() {
-  const apiKey = "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";
+  const apiKey = "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";
 
   const [messages, setMessages] = useState([
     {
