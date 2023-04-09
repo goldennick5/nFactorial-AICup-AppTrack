@@ -1,10 +1,17 @@
 import { useState } from "react";
 import s from "./chat.module.scss";
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import {
+  MainContainer,
+  ChatContainer,
+  MessageList,
+  Message,
+  MessageInput,
+  TypingIndicator,
+} from "@chatscope/chat-ui-kit-react";
 
 export default function Chat() {
-  const apiKey = "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";
+  const apiKey = "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";
 
   const [messages, setMessages] = useState([
     {
@@ -31,7 +38,6 @@ export default function Chat() {
   };
 
   async function processMessageToChatGPT(chatMessages) {
-
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
       if (messageObject.sender === "nHelper") {
@@ -59,14 +65,15 @@ export default function Chat() {
         return data.json();
       })
       .then((data) => {
-        console.log(data);
-        setMessages([
-          ...chatMessages,
-          {
-            message: data.choices[0].message.content,
-            sender: "nHelper",
-          },
-        ]);
+        if (data && data.choices && data.choices.length > 0) {
+          setMessages([
+            ...chatMessages,
+            {
+              message: data.choices[0].message.content,
+              sender: "nHelper",
+            },
+          ]);
+        }
         setIsTyping(false);
       });
   }
